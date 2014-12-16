@@ -18,15 +18,19 @@
                 <fieldset>
                     <p>
                         <label for="ssn">SSN:</label>
-                        <input type="text" id="ssn"/>
+                        <input type="text" name="ssn" id="ssn"/>
                     </p>
                     <p>
                         <label for="loanAmount">Loan amount:</label>
-                        <input type="number" id="loanAmount"/>
+                        <input type="number" name="loanAmount" id="loanAmount"/>
                     </p>
                     <p>
                         <label for="">Loan duration:</label>
-                        <input type="number" id="loanDuration"/>
+                        <input type="number" name="loanDuration" id="loanDuration"/>
+                    </p>
+                    <p>
+                        <input type="submit" id="sendButton" name="sendButton" value="Send Request"/>
+                        <input type="reset" id="resetButton" name="resetButton" value="Reset"
                     </p>
                 </fieldset>
             </form>

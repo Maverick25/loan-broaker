@@ -5,6 +5,9 @@
  */
 package dk.loanbroker.controller;
 
+import com.google.gson.Gson;
+import dk.loanbroker.dto.LoanRequestDTO;
+import dk.loanbroker.messaging.LoanRequestSender;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -60,7 +63,7 @@ public class SendLoanRequest extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -75,7 +78,16 @@ public class SendLoanRequest extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        String ssn = request.getParameter("ssn");
+        double loanAmount = Double.parseDouble(request.getParameter("loanAmount"));
+        int loanDuration = Integer.parseInt(request.getParameter("loanDuration"));
         
+        LoanRequestDTO loanRequest = new LoanRequestDTO(ssn, loanAmount, loanDuration, -1);//the credit score is set to -1
+        
+        Gson gson = new Gson();
+        String loanRequestJson = gson.toJson(loanRequest);
+        
+        LoanRequestSender.sendLoanRequest(loanRequestJson);
     }
 
     /**
