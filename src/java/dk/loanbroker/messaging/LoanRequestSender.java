@@ -17,7 +17,8 @@ import java.io.IOException;
  */
 public class LoanRequestSender 
 {
-    private static final String TASK_QUEUE_NAME = "task_queue";
+    private static final String TASK_QUEUE_NAME = "queue_getCreditScore";
+    
     public static void sendLoanRequest(String message) throws IOException 
     {
         ConnectionFactory factory = new ConnectionFactory();
