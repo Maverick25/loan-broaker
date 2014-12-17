@@ -6,6 +6,7 @@
 package dk.loanbroker.messaging;
 
 import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -46,10 +47,10 @@ public class LoanRequestSender
         String response = null;
         String corrId = java.util.UUID.randomUUID().toString();
         
-        AMQP.BasicProperties props = new AMQP.BasicProperties.Builder().correlationId(corrId).build();
+        BasicProperties props = new BasicProperties.Builder().correlationId(corrId).replyTo(REPLY_QUEUE_NAME).build();
         
         channel.basicPublish("", TASK_QUEUE_NAME, props, message.getBytes());
-        
+        System.out.println(corrId);
         while(true)
         {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
