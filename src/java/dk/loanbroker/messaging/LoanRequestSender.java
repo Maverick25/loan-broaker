@@ -46,7 +46,7 @@ public class LoanRequestSender
         String response = null;
         String corrId = java.util.UUID.randomUUID().toString();
         
-        AMQP.BasicProperties props = new AMQP.BasicProperties.Builder().correlationId(corrId).replyTo(REPLY_QUEUE_NAME).build();
+        AMQP.BasicProperties props = new AMQP.BasicProperties.Builder().correlationId(corrId).build();
         
         channel.basicPublish("", TASK_QUEUE_NAME, props, message.getBytes());
         
