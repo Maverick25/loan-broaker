@@ -7,31 +7,27 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${file.reference.commons-cli-1.1.jar}</file>
+                    <file>${file.reference.commons-cli-1.1.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.commons-io-1.2.jar}</file>
+                    <file>${file.reference.commons-io-1.2.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.junit.jar}</file>
+                    <file>${file.reference.gson-2.2.4.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.rabbitmq-client-tests.jar}</file>
+                    <file>${file.reference.junit.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.rabbitmq-client.jar}</file>
+                    <file>${file.reference.rabbitmq-client-tests.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.gson-2.2.4.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.json-simple-1.1.1.jar}</file>
+                    <file>${file.reference.rabbitmq-client.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
