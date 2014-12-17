@@ -10,6 +10,8 @@ import dk.loanbroker.dto.LoanRequestDTO;
 import dk.loanbroker.messaging.LoanRequestSender;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -87,7 +89,14 @@ public class SendLoanRequest extends HttpServlet
         Gson gson = new Gson();
         String loanRequestJson = gson.toJson(loanRequest);
         
-        LoanRequestSender.sendLoanRequest(loanRequestJson);
+        LoanRequestSender sender = new LoanRequestSender();
+        try 
+        {
+            sender.call(loanRequestJson);
+        } catch (InterruptedException ex)
+        {
+            Logger.getLogger(SendLoanRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
